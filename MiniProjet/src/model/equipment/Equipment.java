@@ -5,24 +5,54 @@ import java.util.ArrayList;
 import utils.Period;
 
 public abstract class Equipment {
-	private String id;
-	private ArrayList<Period> UnavailablePeriod;
-	
-	public Equipment(String id, ArrayList<Period> unavailablePeriod) {
-	    super();
-	    this.id = id;
-	    UnavailablePeriod = unavailablePeriod;
-    }
-	
-	public String getId() {
-    	return id;
+    
+    // Fields
+    
+    private String id;
+    private String maker;
+    private ArrayList<Period> unavailabalityPeriods;
+    private static int counter = 1;
+
+    // Constructors
+    
+    public Equipment()
+    {
+        this("E", "unkwown", new ArrayList<Period>());
     }
 
-	public ArrayList<Period> getUnavailablePeriod() {
-    	return UnavailablePeriod;
+    public Equipment(String id, String maker, ArrayList<Period> unavailabalityPeriods) {
+        this.id = id + "-" + counter;
+        this.maker = maker;
+        this.unavailabalityPeriods = unavailabalityPeriods;
+        counter++;
     }
-	public void setUnavailablePeriod(ArrayList<Period> unavailablePeriod) {
-    	UnavailablePeriod = unavailablePeriod;
+    
+    // Methods
+    
+    public String toString() {
+        return "ID: "+id+", made by: "+maker+", unavailable: "+unavailabalityPeriods;
+    }
+
+    // Getters and setters
+    
+    public String getId() {
+    	return id;
+    }
+    
+    public String getMaker() {
+        return maker;
+    }
+
+    public ArrayList<Period> getUnavailabalityPeriods() {
+    	return unavailabalityPeriods;
+    }
+    
+    public void setUnavailabalityPeriods(ArrayList<Period> unavailabalityPeriods) {
+    	this.unavailabalityPeriods = unavailabalityPeriods;
+    }
+    
+    public static int getCounter() {
+        return counter;
     }
 	
 }
