@@ -2,6 +2,9 @@ package model.equipment;
 
 import java.util.ArrayList;
 
+import config.OS;
+import config.Processor;
+
 import utils.Period;
 
 public class Ipad3 extends Hardware {
@@ -9,7 +12,8 @@ public class Ipad3 extends Hardware {
     // Constructors
     
     public Ipad3() {
-        super("Ipad3", "Apple", new ArrayList<Period>(), 9.7, "A5X", "iOS_5");
+        super("Ipad3", "Apple", new ArrayList<Period>(), 9.7, Processor.APPLEA5X,
+                OS.IOS5);
     }
     
     // Main

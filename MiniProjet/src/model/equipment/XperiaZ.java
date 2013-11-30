@@ -2,6 +2,9 @@ package model.equipment;
 
 import java.util.ArrayList;
 
+import config.OS;
+import config.Processor;
+
 import utils.Period;
 
 public class XperiaZ extends Hardware {
@@ -9,7 +12,8 @@ public class XperiaZ extends Hardware {
     // Constructors
     
     public XperiaZ() {
-        super("XperiaZ", "Sony", new ArrayList<Period>(), 6.4, "APQ8064", "Android 4.1");
+        super("XperiaZ", "Sony", new ArrayList<Period>(), 6.4, Processor.APQ8064,
+                OS.ANDROID41);
     }
     
     // Main
