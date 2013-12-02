@@ -1,14 +1,13 @@
 package config;
 
-public enum OS {
-    IOS5("iOS_5"),
-    ANDROID41("Android 4.1"),
-    ANDROID43("Android 4.3");
+public enum Processor {
+    ARMCORTEX("ARM Cortex"),
+    APPLEA5X("Apple A5X"),
+    APQ8064("APQ 8064");
     
     private String name;
     
-    private OS(String name)
-    {
+    private Processor(String name) {
         this.name = name;
     }
     
