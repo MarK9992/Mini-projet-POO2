@@ -35,11 +35,17 @@ public class Main {
 			//System.out.println(key.toString());
 		}
 		
-		System.out.println("INVENTORY");
+		System.out.println("INVENTORY ---");
 		Inventory r = new Inventory();
+		r.addEquipment(new XperiaZ());
+		r.addEquipment(new XperiaZ());
+		r.addEquipment(new XperiaZ());
+		r.addEquipment(new XperiaZ());
 		r.addEquipment(new XperiaZ());
 		r.addEquipment(new Ipad3());
 		r.addEquipment(new Vengeance2100());
+		
+		System.out.println(r.toString());
 		
 		
 	}

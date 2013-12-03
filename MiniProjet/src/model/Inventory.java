@@ -18,7 +18,7 @@ public class Inventory {
 	public Inventory() {
 		this.inventory.put(Type.HEADPHONE, new ArrayList<Equipment>());
 		this.inventory.put(Type.SMARTPHONE, new ArrayList<Equipment>());
-		this.inventory.put(Type.TABLETTE, new ArrayList<Equipment>());
+		this.inventory.put(Type.PAD, new ArrayList<Equipment>());
 	}
 
 	// Constructor by config
@@ -34,24 +34,43 @@ public class Inventory {
 
 	// Ajoute un équipement dans le stock
 	public void addEquipment(Equipment e){
-		Set<Type> keys = this.inventory.keySet();
-		Iterator<Type> it = keys.iterator();
-
 		this.inventory.get(e.getType()).add(e);
-		
-		// TODO remove les affichages	
-		System.out.println(e.getType());
-		System.out.println(e.toString());
 	}
 
 	public HashMap<Type, ArrayList<Equipment>> getInventory() {
     	return inventory;
     }
 	
-	//TODO l'affichage
-	public String toString() {
-		return "";	
+	public Boolean isInStock(Equipment e){
+		Set<Type> keys = this.inventory.keySet();
+		Iterator<Type> it = keys.iterator();
+		
+		while (it.hasNext()) {
+			Type key = it.next();
+			
+			for(Equipment i : this.inventory.get(key))
+			{
+				if(e.equals(i)) return true;
+			}
+		}
+		return false;
 	}
 	
+	public String toString() {
+		String res= "";
+		Set<Type> keys = this.inventory.keySet();
+		Iterator<Type> it = keys.iterator();
+		
+		while (it.hasNext()) {
+			Type key = it.next();
+			res += "EQUIPMENT TYPE : " + key.toString() + "\n";
+			
+			for(Equipment e : this.inventory.get(key))
+			{
+				res += "\t" + e.toString() + "\n";
+			}
+		}
+		return res;	
+	}
 }
 

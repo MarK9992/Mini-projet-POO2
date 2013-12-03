@@ -1,7 +1,7 @@
 package config;
 
 public enum Type {
-    TABLETTE("Tablette"),
+    PAD("PAD"),
     SMARTPHONE("Smartphone"),
     HEADPHONE("Headphone"),
     UNKWOWN("Unkwown");
