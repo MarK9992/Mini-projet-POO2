@@ -1,11 +1,10 @@
 package utils;
-
 import java.util.Calendar;
 
 public class Period {
     
-    // Fields
-    
+    // Fields 
+	
     private Calendar startDate;
     private Calendar endDate;
 
@@ -19,6 +18,12 @@ public class Period {
         super();
         this.startDate = sd;
         this.endDate = ed;
+        
+        // Verify if the endDate is after the startDate, 
+        // else correct it in considering that the period is between the startDay and itself
+        if(this.getDaysNumberBetween()<0) {
+        	this.endDate = this.startDate;
+        }
     }
 	
     public Calendar getStartDate() {
@@ -29,9 +34,9 @@ public class Period {
     	return endDate;
     }
 
-    // TODO to verify
-    public int getDuration() {
-        return this.startDate.compareTo(this.endDate);
+    public long getDaysNumberBetween() {
+    	long time = this.endDate.getTimeInMillis()-this.startDate.getTimeInMillis();
+    	return time / (24 * 60 * 60 * 1000);
     }
     
     public String toString() {

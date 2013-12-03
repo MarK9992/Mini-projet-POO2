@@ -9,7 +9,8 @@ public class Loan {
 	// Fields
 
 	private Equipment equipment;
-	private Period period;
+	private Period reservationPeriod;
+	private Period borrowPeriod;
 	private Boolean valid;
 	private Manager manager;
 
@@ -19,9 +20,10 @@ public class Loan {
 		// TODO when the inventory class will be ready
 	}
 
-	public Loan(Equipment equipment, Period period, Manager manager) {
+	public Loan(Equipment equipment, Period borrow, Period reservation, Manager manager) {
 		this.equipment = equipment;
-		this.period = period;
+		this.reservationPeriod = reservation;
+		this.borrowPeriod = borrow;
 		this.valid = false;
 		this.manager = manager; // should be a constant DEFAULTMANAGER or a
 								// method attributeManager(...) somewhere
@@ -30,14 +32,14 @@ public class Loan {
 	// Methods
 
 	public String toString() {
-		return "Equipment: " + equipment + ", period: " + period + ", valid: "
+		return "Equipment: " + equipment + ", period: " + reservationPeriod + ", valid: "
 		        + valid + ", manager: " + manager;
 	}
 
 	// Getters and setters
 
 	public Period getPeriod() {
-		return period;
+		return reservationPeriod;
 	}
 
 	public Boolean getValid() {
