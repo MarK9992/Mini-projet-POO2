@@ -1,6 +1,4 @@
-import java.util.Calendar;
-
-import utils.Period;
+import controller.Controller;
 
 public class Main {
 
@@ -8,15 +6,8 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Calendar startDate = Calendar.getInstance();
-		Calendar endDate = Calendar.getInstance();
-		startDate.set(2013, 11, 25);
-		endDate.set(2013, 12, 25);
-		Period p = new Period(startDate, endDate);
-		
-		System.out.println("" + p.toString());
-		System.out.println("" + p.toString());
-		System.out.println("" + p.getDaysNumberBetween());
+		Controller c = new Controller();
+		c.start();
 	}
 
 }

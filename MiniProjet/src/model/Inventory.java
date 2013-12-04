@@ -35,6 +35,11 @@ public class Inventory {
 	public HashMap<Type, ArrayList<Equipment>> getInventory() {
 		return inventory;
 	}
+	
+
+	public void setInventory(HashMap<Type, ArrayList<Equipment>> inventory) {
+    	this.inventory = inventory;
+    }
 
 	// Add an equipment in the stock
 	public void addEquipment(Equipment e) {
@@ -93,10 +98,12 @@ public class Inventory {
 		String res = "";
 		Set<Type> keys = this.inventory.keySet();
 		Iterator<Type> it = keys.iterator();
-
+		
+		res+= "--- EQUIPMENTS ---\n\n";
+		
 		while (it.hasNext()) {
 			Type key = it.next();
-			res += "EQUIPMENT TYPE : " + key.toString() + "\n";
+			res += "EQUIPMENTS TYPE : " + key.toString() + "\n";
 
 			for (Equipment e : this.inventory.get(key)) {
 				res += "\t" + e.toString() + "\n";
