@@ -41,4 +41,8 @@ public abstract class Borrower extends User {
     public ArrayList<Loan> getLoanList() {
         return loanList;
     }
+    
+    public String getType() {
+        return type;
+    }
 }

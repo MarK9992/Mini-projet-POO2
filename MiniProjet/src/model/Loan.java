@@ -14,7 +14,6 @@ public class Loan {
     private Model model;
     private String equipmentID;
     private Period period;
-    private Boolean valid;
     private Borrower borrower;
 
     // Constructors
@@ -27,20 +26,23 @@ public class Loan {
         this.model = model;
         this.period = p;
         this.borrower = borrower;
-        this.valid = false;
     }
 
     // Methods
 
     public String toString() {
         return "EquipmentID: " + equipmentID + ", model: " + model
-                + ", period: " + period + ", valid: " + valid;
+                + ", period: " + period;
     }
 
     // Getters and setters
 
     public String getEquipmentID() {
         return equipmentID;
+    }
+    
+    public void setEquipmentID(String s) {
+        equipmentID = s;
     }
 
     public Model getModel() {
@@ -53,13 +55,5 @@ public class Loan {
 
     public Borrower getBorrower() {
         return borrower;
-    }
-
-    public Boolean getValid() {
-        return valid;
-    }
-
-    public void setValid(Boolean valid) {
-        this.valid = valid;
     }
 }
