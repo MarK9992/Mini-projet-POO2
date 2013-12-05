@@ -11,6 +11,7 @@ public class Loan implements CommonConstants {
 
 	private Equipment equipment;
 	private Period borrowPeriod;
+	private Period reservationPeriod;
 	private Boolean valid;
 	private Manager manager;
 

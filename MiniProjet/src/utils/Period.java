@@ -12,6 +12,8 @@ public class Period {
     
     public Period() {
         this(Calendar.getInstance(), Calendar.getInstance());
+        long endTime = this.startDate.getTimeInMillis() + (24 * 60 * 60 * 1000)*7 ;
+        this.endDate.setTimeInMillis(endTime);
     }
     
     public Period(Calendar sd, Calendar ed) {

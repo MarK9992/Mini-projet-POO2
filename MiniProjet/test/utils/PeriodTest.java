@@ -9,6 +9,13 @@ import org.junit.Test;
 public class PeriodTest {
 
 	@Test
+	public void defaultConstructor() {
+		Period p = new Period();
+		System.out.println(p.toString());
+		assertEquals(7, p.getDaysNumberBetween());
+	}
+	
+	@Test
 	public void getDaysNumberBetween() {
 		Calendar startDate = Calendar.getInstance();
 		Calendar endDate = Calendar.getInstance();

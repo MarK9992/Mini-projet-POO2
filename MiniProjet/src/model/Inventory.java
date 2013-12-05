@@ -76,7 +76,7 @@ public class Inventory {
                     if(eq.availableNow()) return eq;
                 }
 	    }
-            
+   
             return null;
 	}
 	/**

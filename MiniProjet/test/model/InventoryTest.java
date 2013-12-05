@@ -2,12 +2,19 @@ package model;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import model.equipment.Equipment;
 import model.equipment.Ipad3;
 import model.equipment.Vengeance2100;
 import model.equipment.XperiaZ;
 
 import org.junit.Test;
+
+import utils.Period;
+
+import config.Type;
 
 public class InventoryTest {
 
@@ -86,26 +93,30 @@ public class InventoryTest {
 	}
 	
 	@Test
-	public void findEquipmentTest() {
+	public void findAvailableEquipmentTest() {
 		Ipad3 ip = new Ipad3();
 		Ipad3 ip2 = new Ipad3();
+		ArrayList<Period> a = new ArrayList<Period>();
+		a.add(new Period());
+		ip.setUnavailabalityPeriods(a);
+		
 		Vengeance2100 v = new Vengeance2100();
+		XperiaZ x = new XperiaZ();
 		
 		Inventory r = new Inventory();
-		r.addEquipment(new XperiaZ());
-		r.addEquipment(new XperiaZ());
-		r.addEquipment(new XperiaZ());
-		r.addEquipment(new XperiaZ());
-		r.addEquipment(new XperiaZ());
+		r.addEquipment(x);
 		r.addEquipment(ip);
+		r.addEquipment(ip2);
 		r.addEquipment(v);
+
+		assertEquals(v, r.findAvailableEquipment(Type.HEADPHONE));
+		assertEquals(x, r.findAvailableEquipment(Type.SMARTPHONE));
+		assertEquals(ip2, r.findAvailableEquipment(Type.PAD));
 		
-		Ipad3 e1 =  (Ipad3) r.findEquipment(ip);
-		Vengeance2100 e2 =  (Vengeance2100) r.findEquipment(v);
-		
-		assertEquals(true, e1.equals(ip));
-		assertEquals(true, e2.equals(v));
-		assertNull(r.findEquipment(ip2));
+		Inventory r2 = new Inventory();
+		assertNull(r2.findAvailableEquipment(Type.PAD));
+		assertNull(r2.findAvailableEquipment(Type.HEADPHONE));
+		assertNull(r2.findAvailableEquipment(Type.SMARTPHONE));
 	}
 
 }

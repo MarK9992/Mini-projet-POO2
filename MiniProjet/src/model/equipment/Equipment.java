@@ -13,7 +13,7 @@ public abstract class Equipment {
 	// Fields
 	private String id;
 	private String maker;
-	private ArrayList<Period> unavailabalityPeriods;
+	private ArrayList<Period> unavailabalityPeriods = new ArrayList<Period>();
 	private Type type;
 
 	// Constructors
@@ -38,7 +38,10 @@ public abstract class Equipment {
 	 * @return
 	 */
 	public boolean availableNow() {
-	    return !this.getUnavailabalityPeriods().get(0).today());
+		if(this.getUnavailabalityPeriods().size() > 0) {
+			return (!this.getUnavailabalityPeriods().get(0).today());
+		}
+	    return true;
 	}
 
 	public String toString() {
