@@ -1,11 +1,11 @@
 package model;
 
-import config.CommonConstants;
 import model.equipment.Equipment;
 import model.users.Manager;
 import utils.Period;
+import model.ManagementSystem;
 
-public class Loan implements CommonConstants {
+public class Loan {
 
 	// Fields
 
@@ -13,26 +13,24 @@ public class Loan implements CommonConstants {
 	private Period borrowPeriod;
 	private Period reservationPeriod;
 	private Boolean valid;
-	private Manager manager;
 
 	// Constructors
 
 	public Loan() {
-		this(INVENTORY.findAvailableEquipment(), new Period(), DEFAULTMANAGER);
+		this(null, new Period());
 	}
 
-	public Loan(Equipment equipment, Period borrow, Manager manager) {
+	public Loan(Equipment equipment, Period borrow) {
 		this.equipment = equipment;
 		this.borrowPeriod = borrow;
-		this.valid = false;
-		this.manager = manager; 								
+		this.valid = false;								
 	}
 
 	// Methods
 
 	public String toString() {
 		return "Equipment: " + equipment + ", period: " + reservationPeriod + ", valid: "
-		        + valid + ", manager: " + manager;
+		        + valid;
 	}
 
 	// Getters and setters
@@ -47,13 +45,5 @@ public class Loan implements CommonConstants {
 
 	public void setValid(Boolean valid) {
 		this.valid = valid;
-	}
-
-	public Manager getManager() {
-		return manager;
-	}
-
-	public void setManager(Manager manager) {
-		this.manager = manager;
 	}
 }

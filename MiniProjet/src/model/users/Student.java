@@ -1,9 +1,11 @@
 package model.users;
 
 import java.util.ArrayList;
+import model.ManagementSystem;
 
 import model.Loan;
 
+import config.Model;
 import config.StudentConstants;
 
 public class Student extends Borrower implements StudentConstants {
@@ -21,7 +23,7 @@ public class Student extends Borrower implements StudentConstants {
     // Methods
 
     @Override
-    public void borrow() {
+    public void borrow(Model m) {
         // TODO Auto-generated method stub
             
     }

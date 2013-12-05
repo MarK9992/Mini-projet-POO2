@@ -2,6 +2,8 @@ package model.users;
 
 import java.util.ArrayList;
 
+import config.Model;
+
 import model.Loan;
 
 public abstract class Borrower extends User {
@@ -23,7 +25,7 @@ public abstract class Borrower extends User {
 
     // Methods
     
-    public abstract void borrow();
+    public abstract void borrow(Model m);
     public abstract void restitute();
     
     public String toString() {

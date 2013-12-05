@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.Loan;
 
+import config.Model;
 import config.TeacherConstants;
 
 public class Teacher extends Borrower implements TeacherConstants {
@@ -21,7 +22,7 @@ public class Teacher extends Borrower implements TeacherConstants {
     // Methods
     
     @Override
-    public void borrow() {
+    public void borrow(Model m) {
         // TODO Auto-generated method stub
 	    
     }

@@ -1,3 +1,1 @@
-Je ne comprends pas la méthodes inventory.findEquipment().
 Il faut initialiser les CommonConstants, peut-être créer un garde-fou qui vérifie leur initialisation avant de lancer le programme.
-Comment manipuler les Calendars précisément ? Comme modifier sa valeur à une semaine plus tard ?
