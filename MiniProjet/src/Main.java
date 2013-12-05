@@ -6,7 +6,7 @@ import model.equipment.Ipad3;
 import model.equipment.Vengeance2100;
 import model.equipment.XperiaZ;
 import utils.Period;
-import config.Type;
+import config.Model;
 import controller.Controller;
 
 public class Main {
@@ -31,7 +31,7 @@ public class Main {
 		r.addEquipment(v);
 		
 		
-		for(Equipment eq : r.getInventory().get(Type.HEADPHONE)) {
+		for(Equipment eq : r.getInventory().get(Model.VENGEANCE2100)) {
 	        if(eq.availableNow()) System.out.println("" + eq.toString());
 	    }
 		

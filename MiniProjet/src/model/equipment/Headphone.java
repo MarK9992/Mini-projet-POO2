@@ -2,7 +2,7 @@ package model.equipment;
 
 import java.util.ArrayList;
 
-import config.Type;
+import config.Model;
 
 import utils.Period;
 
@@ -17,11 +17,11 @@ public abstract class Headphone extends Equipment {
 	// Constructors
 
 	public Headphone() {
-		this("HP", "unknown", new ArrayList<Period>(), 30, "20-20000", 100, Type.HEADPHONE);
+		this("HP", "unknown", new ArrayList<Period>(), 30, "20-20000", 100, Model.UNKWOWN);
 	}
 
 	public Headphone(String id, String maker, ArrayList<Period> unavPer,
-	        int imp, String resp, int pres, Type type) {
+	        int imp, String resp, int pres, Model type) {
 		super(id, maker, unavPer, type);
 		impedance = imp + " Ohms";
 		frequencyResponse = resp + " Hz";

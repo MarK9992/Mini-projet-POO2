@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import config.ConfigXML;
-import config.Type;
+import config.Model;
 
 import model.equipment.Equipment;
 import model.users.*;

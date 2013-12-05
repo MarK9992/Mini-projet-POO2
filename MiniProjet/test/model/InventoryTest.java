@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import utils.Period;
 
-import config.Type;
+import config.Model;
 
 public class InventoryTest {
 
@@ -109,14 +109,14 @@ public class InventoryTest {
 		r.addEquipment(ip2);
 		r.addEquipment(v);
 
-		assertEquals(v, r.findAvailableEquipment(Type.HEADPHONE));
-		assertEquals(x, r.findAvailableEquipment(Type.SMARTPHONE));
-		assertEquals(ip2, r.findAvailableEquipment(Type.PAD));
+		assertEquals(v, r.findAvailableEquipment(Model.VENGEANCE2100));
+		assertEquals(x, r.findAvailableEquipment(Model.XPERIAZ));
+		assertEquals(ip2, r.findAvailableEquipment(Model.IPAD3));
 		
 		Inventory r2 = new Inventory();
-		assertNull(r2.findAvailableEquipment(Type.PAD));
-		assertNull(r2.findAvailableEquipment(Type.HEADPHONE));
-		assertNull(r2.findAvailableEquipment(Type.SMARTPHONE));
+		assertNull(r2.findAvailableEquipment(Model.IPAD3));
+		assertNull(r2.findAvailableEquipment(Model.VENGEANCE2100));
+		assertNull(r2.findAvailableEquipment(Model.XPERIAZ));
 	}
 
 }

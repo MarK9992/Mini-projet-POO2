@@ -6,37 +6,37 @@ import java.util.Iterator;
 import java.util.Set;
 
 import config.ConfigXML;
-import config.Type;
+import config.Model;
 
 import model.equipment.Equipment;
 
 public class Inventory {
-	private HashMap<Type, ArrayList<Equipment>> inventory = new HashMap<Type, ArrayList<Equipment>>();
+	private HashMap<Model, ArrayList<Equipment>> inventory = new HashMap<Model, ArrayList<Equipment>>();
 
 	public Inventory() {
-		this.inventory.put(Type.HEADPHONE, new ArrayList<Equipment>());
-		this.inventory.put(Type.SMARTPHONE, new ArrayList<Equipment>());
-		this.inventory.put(Type.PAD, new ArrayList<Equipment>());
+		this.inventory.put(Model.VENGEANCE2100, new ArrayList<Equipment>());
+		this.inventory.put(Model.XPERIAZ, new ArrayList<Equipment>());
+		this.inventory.put(Model.IPAD3, new ArrayList<Equipment>());
 	}
 
 	// Constructor with config
 	public Inventory(String defaultConfigNameFile, String defaultConfigVersion) {
-		this.inventory = (HashMap<Type, ArrayList<Equipment>>) ConfigXML.load(
+		this.inventory = (HashMap<Model, ArrayList<Equipment>>) ConfigXML.load(
 		        defaultConfigNameFile, defaultConfigVersion);
 	}
 
 	// Constructor with HashMap
-	public Inventory(HashMap<Type, ArrayList<Equipment>> inventory) {
+	public Inventory(HashMap<Model, ArrayList<Equipment>> inventory) {
 		this.inventory = inventory;
 	}
 
 	// Getter
-	public HashMap<Type, ArrayList<Equipment>> getInventory() {
+	public HashMap<Model, ArrayList<Equipment>> getInventory() {
 		return inventory;
 	}
 	
 
-	public void setInventory(HashMap<Type, ArrayList<Equipment>> inventory) {
+	public void setInventory(HashMap<Model, ArrayList<Equipment>> inventory) {
     	this.inventory = inventory;
     }
 
@@ -68,7 +68,7 @@ public class Inventory {
 	 */
 	public Equipment findAvailableEquipment() {
 	    Equipment eq;
-	    Type[] t = {Type.PAD, Type.HEADPHONE, Type.SMARTPHONE, Type.UNKWOWN};
+	    Model[] t = {Model.IPAD3, Model.VENGEANCE2100, Model.XPERIAZ, Model.UNKWOWN};
             
 	    for(int j = 0; j < t.length; j++) {
                 for(int i = 0; i < this.inventory.get(t[j]).size(); i++) {
@@ -84,7 +84,7 @@ public class Inventory {
 	 * @param t
 	 * @return
 	 */
-	public Equipment findAvailableEquipment(Type t) {
+	public Equipment findAvailableEquipment(Model t) {
 	    Equipment eq;
 	    
 	    for(int i = 0; i < this.inventory.get(t).size(); i++) {
@@ -99,11 +99,11 @@ public class Inventory {
 	public int getNumberElements() {
 		int number = 0;
 
-		Set<Type> keys = this.inventory.keySet();
-		Iterator<Type> it = keys.iterator();
+		Set<Model> keys = this.inventory.keySet();
+		Iterator<Model> it = keys.iterator();
 
 		while (it.hasNext()) {
-			Type key = it.next();
+			Model key = it.next();
 			number += this.inventory.get(key).size();
 		}
 
@@ -112,11 +112,11 @@ public class Inventory {
 
 	// return true if this equipment exist in the stock
 	public Boolean isInStock(Equipment e) {
-		Set<Type> keys = this.inventory.keySet();
-		Iterator<Type> it = keys.iterator();
+		Set<Model> keys = this.inventory.keySet();
+		Iterator<Model> it = keys.iterator();
 
 		while (it.hasNext()) {
-			Type key = it.next();
+			Model key = it.next();
 
 			for (Equipment i : this.inventory.get(key)) {
 				if (e.equals(i))
@@ -129,13 +129,13 @@ public class Inventory {
 	@Override
 	public String toString() {
 		String res = "";
-		Set<Type> keys = this.inventory.keySet();
-		Iterator<Type> it = keys.iterator();
+		Set<Model> keys = this.inventory.keySet();
+		Iterator<Model> it = keys.iterator();
 		
 		res+= "--- EQUIPMENTS ---\n\n";
 		
 		while (it.hasNext()) {
-			Type key = it.next();
+			Model key = it.next();
 			res += "EQUIPMENTS TYPE : " + key.toString() + "\n";
 
 			for (Equipment e : this.inventory.get(key)) {

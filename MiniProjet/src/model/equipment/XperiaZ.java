@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import config.OS;
 import config.Processor;
-import config.Type;
+import config.Model;
 
 import utils.Period;
 
@@ -14,7 +14,7 @@ public class XperiaZ extends Hardware {
 
 	public XperiaZ() {
 		super("XperiaZ", "Sony", new ArrayList<Period>(), 6.4,
-		        Processor.APQ8064, OS.ANDROID41, Type.SMARTPHONE);
+		        Processor.APQ8064, OS.ANDROID41, Model.XPERIAZ);
 	}
 
 	// Main

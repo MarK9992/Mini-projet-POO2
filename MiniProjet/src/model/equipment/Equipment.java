@@ -2,7 +2,7 @@ package model.equipment;
 
 import java.util.ArrayList;
 
-import config.Type;
+import config.Model;
 
 import utils.Period;
 
@@ -14,16 +14,16 @@ public abstract class Equipment {
 	private String id;
 	private String maker;
 	private ArrayList<Period> unavailabalityPeriods = new ArrayList<Period>();
-	private Type type;
+	private Model type;
 
 	// Constructors
 
 	public Equipment() {
-		this("E", "unkwown", new ArrayList<Period>(), Type.UNKWOWN);
+		this("E", "unkwown", new ArrayList<Period>(), Model.UNKWOWN);
 	}
 
 	public Equipment(String id, String maker,
-	        ArrayList<Period> unavailabalityPeriods, Type type) {
+	        ArrayList<Period> unavailabalityPeriods, Model type) {
 		this.id = id + "-" + counter;
 		this.maker = maker;
 		this.unavailabalityPeriods = unavailabalityPeriods;
@@ -71,7 +71,7 @@ public abstract class Equipment {
 		return counter;
 	}
 
-	public Type getType() {
+	public Model getType() {
     	return type;
     }
 

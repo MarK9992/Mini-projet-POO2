@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import utils.Period;
 import config.OS;
 import config.Processor;
-import config.Type;
+import config.Model;
 
 public abstract class Hardware extends Equipment {
 
@@ -19,11 +19,11 @@ public abstract class Hardware extends Equipment {
 
 	public Hardware() {
 		this("HW", "unknown", new ArrayList<Period>(), 10, Processor.ARMCORTEX,
-		        OS.ANDROID43, Type.UNKWOWN);
+		        OS.ANDROID43, Model.UNKWOWN);
 	}
 
 	public Hardware(String id, String maker, ArrayList<Period> unavPer,
-	        double screenSize, Processor proc, OS os, Type type) {
+	        double screenSize, Processor proc, OS os, Model type) {
 		super(id, maker, unavPer, type);
 		this.screenSize = screenSize + "\"";
 		this.processor = proc;

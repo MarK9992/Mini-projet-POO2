@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import config.OS;
 import config.Processor;
-import config.Type;
+import config.Model;
 
 import utils.Period;
 
@@ -14,7 +14,7 @@ public class Ipad3 extends Hardware {
 
 	public Ipad3() {
 		super("Ipad3", "Apple", new ArrayList<Period>(), 9.7,
-		        Processor.APPLEA5X, OS.IOS5, Type.PAD);
+		        Processor.APPLEA5X, OS.IOS5, Model.IPAD3);
 	}
 
 	// Main
