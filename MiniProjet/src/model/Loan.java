@@ -1,49 +1,65 @@
 package model;
 
+import config.Model;
 import model.equipment.Equipment;
+import model.users.Borrower;
 import model.users.Manager;
 import utils.Period;
 import model.ManagementSystem;
 
 public class Loan {
 
-	// Fields
+    // Fields
 
-	private Equipment equipment;
-	private Period borrowPeriod;
-	private Period reservationPeriod;
-	private Boolean valid;
+    private Model model;
+    private String equipmentID;
+    private Period period;
+    private Boolean valid;
+    private Borrower borrower;
 
-	// Constructors
+    // Constructors
 
-	public Loan() {
-		this(null, new Period());
-	}
+    public Loan() {
+        this(null, new Period(), null);
+    }
 
-	public Loan(Equipment equipment, Period borrow) {
-		this.equipment = equipment;
-		this.borrowPeriod = borrow;
-		this.valid = false;								
-	}
+    public Loan(Model model, Period p, Borrower borrower) {
+        this.model = model;
+        this.period = p;
+        this.borrower = borrower;
+        this.valid = false;
+    }
 
-	// Methods
+    // Methods
 
-	public String toString() {
-		return "Equipment: " + equipment + ", period: " + reservationPeriod + ", valid: "
-		        + valid;
-	}
+    public String toString() {
+        return "EquipmentID: " + equipmentID + ", model: " + model
+                + ", period: " + period + ", valid: " + valid;
+    }
 
-	// Getters and setters
+    // Getters and setters
 
-	public Period getPeriod() {
-		return reservationPeriod;
-	}
+    public String getEquipmentID() {
+        return equipmentID;
+    }
 
-	public Boolean getValid() {
-		return valid;
-	}
+    public Model getModel() {
+        return model;
+    }
 
-	public void setValid(Boolean valid) {
-		this.valid = valid;
-	}
+    public Period getPeriod() {
+        return period;
+    }
+
+    public Borrower getBorrower() {
+        return borrower;
+    }
+
+    public Boolean getValid() {
+        return valid;
+    }
+
+    public void setValid(Boolean valid) {
+        this.valid = valid;
+    }
 }

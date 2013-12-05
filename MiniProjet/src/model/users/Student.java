@@ -1,14 +1,15 @@
 package model.users;
 
 import java.util.ArrayList;
+
+import utils.Period;
 import model.ManagementSystem;
 
 import model.Loan;
 
 import config.Model;
-import config.StudentConstants;
 
-public class Student extends Borrower implements StudentConstants {
+public class Student extends Borrower {
 
     // Constructors
     
@@ -17,15 +18,16 @@ public class Student extends Borrower implements StudentConstants {
     }
     
     public Student(String i, String n, ArrayList<Loan> l) {
-        super(i, n, l);
+        super(i, n, l, "student");
     }
     
     // Methods
 
     @Override
-    public void borrow(Model m) {
-        // TODO Auto-generated method stub
+    public Loan book(Model m, Period p) {
+            Loan l = new Loan(m, p, this);
             
+            return l;
     }
 
     @Override

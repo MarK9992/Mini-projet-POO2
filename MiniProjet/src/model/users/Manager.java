@@ -1,8 +1,9 @@
 package model.users;
 
+import config.BorrowerConstants;
 import model.Loan;
 
-public class Manager extends User{
+public class Manager extends User implements BorrowerConstants {
     
     // Constructors
     
@@ -16,8 +17,8 @@ public class Manager extends User{
     
     // Methods
     
-    public void validateLoan(Loan l) {
-        // TODO
+    public void checkLoan(Loan l) {
+
     }
     
     public void putAway(Loan l) {
