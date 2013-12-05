@@ -1,6 +1,7 @@
 package model.users;
 
 import config.BorrowerConstants;
+import model.Inventory;
 import model.Loan;
 
 public class Manager extends User implements BorrowerConstants {
@@ -17,7 +18,7 @@ public class Manager extends User implements BorrowerConstants {
     
     // Methods
     
-    public void checkLoan(Loan l) {
+    public void checkLoan(Loan l, final Inventory i) {
 
     }
     
