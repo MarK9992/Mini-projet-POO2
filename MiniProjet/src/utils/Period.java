@@ -39,6 +39,15 @@ public class Period {
     	return time / (24 * 60 * 60 * 1000);
     }
     
+    /**
+     * Returns true if today is in the period.
+     * @return
+     */
+    public boolean today() {
+        long today = Calendar.getInstance().getTimeInMillis();
+        return today > startDate.getTimeInMillis() && today < endDate.getTimeInMillis();
+    }
+    
     public String toString() {
         return "from "+startDate.get(Calendar.DATE)+"/"+startDate.get(Calendar.MONTH)
                 +"/"+startDate.get(Calendar.YEAR)+" to "+endDate.get(Calendar.DATE)

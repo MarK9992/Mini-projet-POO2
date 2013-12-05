@@ -32,6 +32,14 @@ public abstract class Equipment {
 	}
 
 	// Methods
+	
+	/**
+	 * Returns true if the equipment is available now.
+	 * @return
+	 */
+	public boolean availableNow() {
+	    return !this.getUnavailabalityPeriods().get(0).today());
+	}
 
 	public String toString() {
 		return "ID: " + id + ", made by: " + maker + ", unavailable: "

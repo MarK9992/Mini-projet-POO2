@@ -1,15 +1,15 @@
 package model;
 
+import config.CommonConstants;
 import model.equipment.Equipment;
 import model.users.Manager;
 import utils.Period;
 
-public class Loan {
+public class Loan implements CommonConstants {
 
 	// Fields
 
 	private Equipment equipment;
-	private Period reservationPeriod;
 	private Period borrowPeriod;
 	private Boolean valid;
 	private Manager manager;
@@ -17,16 +17,14 @@ public class Loan {
 	// Constructors
 
 	public Loan() {
-		// TODO when the inventory class will be ready
+		this(INVENTORY.findAvailableEquipment(), new Period(), DEFAULTMANAGER);
 	}
 
-	public Loan(Equipment equipment, Period borrow, Period reservation, Manager manager) {
+	public Loan(Equipment equipment, Period borrow, Manager manager) {
 		this.equipment = equipment;
-		this.reservationPeriod = reservation;
 		this.borrowPeriod = borrow;
 		this.valid = false;
-		this.manager = manager; // should be a constant DEFAULTMANAGER or a
-								// method attributeManager(...) somewhere
+		this.manager = manager; 								
 	}
 
 	// Methods

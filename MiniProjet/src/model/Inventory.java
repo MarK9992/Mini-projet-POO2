@@ -9,7 +9,6 @@ import config.ConfigXML;
 import config.Type;
 
 import model.equipment.Equipment;
-import model.equipment.Headphone;
 
 public class Inventory {
 	private HashMap<Type, ArrayList<Equipment>> inventory = new HashMap<Type, ArrayList<Equipment>>();
@@ -51,8 +50,9 @@ public class Inventory {
 		this.inventory.get(e.getType()).remove(e);
 	}
 	
+	// Récupère l'adresse passée en paramètre ? Je ne comprends pas l'utilité.
 	// Recuperate the equipment from the stock
-	public Equipment findEquipment(Equipment e) {
+	/*public Equipment findEquipment(Equipment e) {
 		for(int i = 0 ; i < this.inventory.get(e.getType()).size(); i++){
 			  Equipment eq = this.inventory.get(e.getType()).get(i);
 			  if(eq.equals(e)) {
@@ -60,6 +60,39 @@ public class Inventory {
 			  }
 		}
 		return null;
+	}*/
+	
+	/**
+	 * Returns an equipment available now, null if none.
+	 * @return
+	 */
+	public Equipment findAvailableEquipment() {
+	    Equipment eq;
+	    Type[] t = {Type.PAD, Type.HEADPHONE, Type.SMARTPHONE, Type.UNKWOWN};
+            
+	    for(int j = 0; j < t.length; j++) {
+                for(int i = 0; i < this.inventory.get(t[j]).size(); i++) {
+                    eq = this.inventory.get(t[j]).get(i);
+                    if(eq.availableNow()) return eq;
+                }
+	    }
+            
+            return null;
+	}
+	/**
+	 * Returns an equipment of type t available now, null if none.
+	 * @param t
+	 * @return
+	 */
+	public Equipment findAvailableEquipment(Type t) {
+	    Equipment eq;
+	    
+	    for(int i = 0; i < this.inventory.get(t).size(); i++) {
+	        eq = this.inventory.get(t).get(i);
+	        if(eq.availableNow()) return eq;
+	    }
+	    
+	    return null;
 	}
 
 	// Count the total number of elements in the stock
