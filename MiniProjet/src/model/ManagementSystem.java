@@ -16,6 +16,7 @@ public class ManagementSystem {
 	private ArrayList<User> students = new ArrayList<User>();
 	private ArrayList<User> teachers = new ArrayList<User>();
 	private ArrayList<User> managers = new ArrayList<User>();
+	private ArrayList<Loan> ongoingValidationLoans = new  ArrayList<Loan>();
 
 	public ManagementSystem(Inventory inventory,
 	        HashMap<String, ArrayList<User>> users) {
@@ -23,6 +24,7 @@ public class ManagementSystem {
 		this.students = users.get("students");
 		this.teachers = users.get("teachers");
 		this.managers = users.get("managers");
+		
 	}
 
 	public ManagementSystem(String configInventoryFile, String configUsersFile, String configVersion) {		
@@ -34,6 +36,12 @@ public class ManagementSystem {
 		    this.managers = ((HashMap<String, ArrayList<User>>) ConfigXML.load(
 		    		configUsersFile, configVersion)).get("managers");
     }
+	
+	public void demo() {
+		// User 1 fait une demande d'emprunt
+		//ongoingValidationLoans.add(((Student)(this.students.get(0))).borrow(/*Model.IPAD3*/));
+		 //= this.managers.get(0).checkLoan(dernierEmprunt);
+	}
 
 	public Inventory getInventory() {
 		return inventory;
