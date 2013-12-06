@@ -2,14 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 
+import model.users.Manager;
+import model.users.Student;
+import model.users.Teacher;
+import model.users.User;
 import config.ConfigXML;
-import config.Model;
-
-import model.equipment.Equipment;
-import model.users.*;
 
 public class ManagementSystem {
     private Inventory inventory;
@@ -17,15 +15,6 @@ public class ManagementSystem {
     private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
     private ArrayList<Manager> managers = new ArrayList<Manager>();
     private ArrayList<Loan> ongoingValidationLoans = new ArrayList<Loan>();
-
-    public ManagementSystem(Inventory inventory,
-            HashMap<String, ArrayList<User>> users) {
-        this.inventory = inventory;
-       // this.students = users.get("students");
-       // this.teachers = users.get("teachers");
-       // this.managers = users.get("managers");
-
-    }
 
     public ManagementSystem(String configInventoryFile, String configUsersFile,
             String configVersion) {
@@ -45,6 +34,12 @@ public class ManagementSystem {
     	if(m.checkLoan(l, this.inventory) == true) {
     		ongoingValidationLoans.add(l);
     	}
+    }
+    
+    public void restitute(Loan l) {	
+    	Manager m = new Manager();
+    	m = (Manager)(this.managers.get(0));
+    	this.ongoingValidationLoans = m.putAway(l, this.ongoingValidationLoans);
     }
 
     public Inventory getInventory() {
@@ -78,14 +73,24 @@ public class ManagementSystem {
     public void setTeachers(ArrayList<Teacher> teachers) {
         this.teachers = teachers;
     }
+    
+    
 
-    @Override
+    public ArrayList<Loan> getOngoingValidationLoans() {
+    	return ongoingValidationLoans;
+    }
+
+	public void setOngoingValidationLoans(ArrayList<Loan> ongoingValidationLoans) {
+    	this.ongoingValidationLoans = ongoingValidationLoans;
+    }
+
+	@Override
     public String toString() {
         String res = "";
 
         res += this.inventory.toString();
         res += "\n\n";
-        res += "--- USERS ---";
+        res += "--- USERS ---\n";
 
         res += "\nManagers\n";
         for (User u : this.managers) {
@@ -102,7 +107,20 @@ public class ManagementSystem {
             res += "\t" + u.toString() + "\n";
         }
         
-        res += "\n--- ON GOING VALIDATION LOANS ---";
+        res += "\n--- VALIDATION LOANS ---\n\n";
+        for (Loan l : this.ongoingValidationLoans) {
+            res += "\t" + l.toString() + "\n";
+        }
+
+        return res;
+    }
+	
+    public String toStringLoan() {
+        String res = "";
+
+        res += "--- USERS ---\n";
+        
+        res += "\n--- VALIDATION LOANS ---\n\n";
         for (Loan l : this.ongoingValidationLoans) {
             res += "\t" + l.toString() + "\n";
         }

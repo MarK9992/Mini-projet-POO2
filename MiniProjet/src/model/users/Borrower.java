@@ -2,11 +2,9 @@ package model.users;
 
 import java.util.ArrayList;
 
-import utils.Period;
-
-import config.Model;
-
 import model.Loan;
+import utils.Period;
+import config.Model;
 
 public abstract class Borrower extends User {
     
@@ -31,7 +29,7 @@ public abstract class Borrower extends User {
     // Methods
     
     public abstract Loan book(Model m, Period p);
-    public abstract void restitute();
+    public abstract void restitute(Loan e);
     
     public String toString() {
         return super.toString()+", loan list: "+loanList;
@@ -43,8 +41,6 @@ public abstract class Borrower extends User {
     }
     
     public ArrayList<Loan> getLoanList() {
-    	
-    	System.err.println("LOL ? " + this.loanList);
         return loanList;
     }
     

@@ -3,9 +3,9 @@ package model.equipment;
 import java.util.ArrayList;
 
 import utils.Period;
+import config.Model;
 import config.OS;
 import config.Processor;
-import config.Model;
 
 public abstract class Hardware extends Equipment {
 

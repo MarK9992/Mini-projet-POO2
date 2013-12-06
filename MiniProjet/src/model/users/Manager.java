@@ -1,13 +1,12 @@
 package model.users;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 
-import utils.Period;
-import config.BorrowerConstants;
 import model.Inventory;
 import model.Loan;
 import model.equipment.Equipment;
+import utils.Period;
+import config.BorrowerConstants;
 
 public class Manager extends User implements BorrowerConstants {
     
@@ -60,11 +59,12 @@ public class Manager extends User implements BorrowerConstants {
         l.setEquipmentID(stuff.getId());
         
         bwer.getLoanList().add(l);
-        
         return true;
     }
     
-    public void putAway(Loan l) {
-        // TODO
+    public ArrayList<Loan> putAway(Loan l, ArrayList<Loan> i) {
+    	i.remove(l);
+    	return i;
     }
+
 }

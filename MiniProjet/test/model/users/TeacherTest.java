@@ -8,12 +8,12 @@ import org.junit.Test;
 import utils.Period;
 import config.Model;
 
-public class StudentTest {
+public class TeacherTest {
 
 	@Test
-	public void book() {
+	public void test() {
 		ManagementSystem m = new ManagementSystem("inventory", "users", "v1");
-		Student t = new Student();
+		Teacher t = new Teacher();
 		m.checkLoan(t.book(Model.XPERIAZ, new Period()));
 		
 		assertEquals(t.getLoanList(), m.getOngoingValidationLoans());

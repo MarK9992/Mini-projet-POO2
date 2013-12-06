@@ -1,11 +1,8 @@
 package model;
 
-import config.Model;
-import model.equipment.Equipment;
 import model.users.Borrower;
-import model.users.Manager;
 import utils.Period;
-import model.ManagementSystem;
+import config.Model;
 
 public class Loan {
 

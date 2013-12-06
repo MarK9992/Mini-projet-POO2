@@ -2,11 +2,8 @@ package model.users;
 
 import java.util.ArrayList;
 
-import utils.Period;
-import model.ManagementSystem;
-
 import model.Loan;
-
+import utils.Period;
 import config.Model;
 
 public class Student extends Borrower {
@@ -30,16 +27,7 @@ public class Student extends Borrower {
     }
 
     @Override
-    public void restitute() {
-        // TODO Auto-generated method stub
-        
-    }
-    
-    // Main
-    
-    public static void main(String[] args) {
-        Student s1 = new Student();
-        
-        System.out.println(s1);
+    public void restitute(Loan e) {
+    	
     }
 }

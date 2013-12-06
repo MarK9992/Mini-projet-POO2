@@ -2,9 +2,8 @@ package model.equipment;
 
 import java.util.ArrayList;
 
-import config.Model;
-
 import utils.Period;
+import config.Model;
 
 public abstract class Equipment {
 
