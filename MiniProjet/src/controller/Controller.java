@@ -1,6 +1,3 @@
-/**
- * @author Anaïs
- */
 package controller;
 
 import java.util.Calendar;
@@ -13,53 +10,60 @@ import utils.Period;
 import view.View;
 import config.Model;
 
+/**
+ * Controller of the program, runs the management system.
+ * 
+ * @author Anaïs
+ * 
+ */
 public class Controller {
-	private View view;
-	private ManagementSystem system;
+    private View view;
+    private ManagementSystem system;
 
-	public Controller(String nameFileInventory, String nameFileUser,String versionFiles) {
-		this.view = new View();
-		this.system = new ManagementSystem(nameFileInventory, nameFileUser, versionFiles);
-		
-	}
+    public Controller(String nameFileInventory, String nameFileUser,
+            String versionFiles) {
+        this.view = new View();
+        this.system = new ManagementSystem(nameFileInventory, nameFileUser,
+                versionFiles);
 
-	/**
-	 * Launcher of the demo of the managementSystem
-	 */
-	public void startDemo() {
-		// Welcoming display
-		this.view.displayMenu();
-		
-		// State of the inventory and the users
-		this.view.displaySystem(this.system);
-		
-		this.view.displayExampleMessage();
-		
-		// Example with a student
-		Student s = this.system.getStudents().get(0);
-		
-		Calendar startDate = Calendar.getInstance();
-		Calendar endDate = Calendar.getInstance();
-		endDate.set(2013, 07, 12);
-		
-		Loan l = s.book(Model.IPAD3, new Period(startDate,endDate));
-		this.system.checkLoan(l);
-		
-		this.view.displayBorrow(s, l);
-		this.system.restitute(l);
-		this.view.displayRestitute(s, l);
-		
-		// Example with a teacher
-		
-		Teacher t = this.system.getTeachers().get(0);
-		
-		Loan l2 = s.book(Model.XPERIAZ, new Period(startDate,endDate));
-		this.system.checkLoan(l2);
-		
-		this.view.displayBorrow(t, l2);
-		this.system.restitute(l2);
-		this.view.displayRestitute(t, l2);
-		
+    }
 
-	}
+    /**
+     * Launcher of the demo of the managementSystem
+     */
+    public void startDemo() {
+        // Welcoming display
+        this.view.displayMenu();
+
+        // State of the inventory and the users
+        this.view.displaySystem(this.system);
+
+        this.view.displayExampleMessage();
+
+        // Example with a student
+        Student s = this.system.getStudents().get(0);
+
+        Calendar startDate = Calendar.getInstance();
+        Calendar endDate = Calendar.getInstance();
+        endDate.setTimeInMillis(endDate.getTimeInMillis() + 6*24*60*60*1000);
+
+        Loan l = s.book(Model.IPAD3, new Period(startDate, endDate));
+        this.system.checkLoan(l);
+
+        this.view.displayBorrow(s, l);
+        this.system.putAway(l);
+        this.view.displayReturn(s, l);
+
+        // Example with a teacher
+
+        Teacher t = this.system.getTeachers().get(0);
+
+        Loan l2 = s.book(Model.XPERIAZ, new Period(startDate, endDate));
+        this.system.checkLoan(l2);
+
+        this.view.displayBorrow(t, l2);
+        this.system.putAway(l2);
+        this.view.displayReturn(t, l2);
+
+    }
 }

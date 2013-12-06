@@ -1,6 +1,3 @@
-/**
- * @author Marc
- */
 package model.equipment;
 
 import java.util.ArrayList;
@@ -10,48 +7,53 @@ import config.Model;
 import config.OS;
 import config.Processor;
 
+/**
+ * Super class Hardware, defines all common properties to hardware.
+ * @author Marc
+ * 
+ */
 public abstract class Hardware extends Equipment {
 
-	// Fields
+    // Fields
 
-	private String screenSize;
-	private Processor processor;
-	private OS os;
+    private String screenSize;
+    private Processor processor;
+    private OS os;
 
-	// Constructors
+    // Constructors
 
-	public Hardware() {
-		this("HW", "unknown", new ArrayList<Period>(), 10, Processor.ARMCORTEX,
-		        OS.ANDROID43, Model.UNKWOWN);
-	}
+    public Hardware() {
+        this("HW", "unknown", new ArrayList<Period>(), 10, Processor.ARMCORTEX,
+                OS.ANDROID43, Model.UNKWOWN);
+    }
 
-	public Hardware(String id, String maker, ArrayList<Period> unavPer,
-	        double screenSize, Processor proc, OS os, Model type) {
-		super(id, maker, unavPer, type);
-		this.screenSize = screenSize + "\"";
-		this.processor = proc;
-		this.os = os;
-	}
+    public Hardware(String id, String maker, ArrayList<Period> unavPer,
+            double screenSize, Processor proc, OS os, Model type) {
+        super(id, maker, unavPer, type);
+        this.screenSize = screenSize + "\"";
+        this.processor = proc;
+        this.os = os;
+    }
 
-	// Methods
+    // Methods
 
-	public String toString() {
-		return super.toString() + ", screensize: " + screenSize
-		        + ", processor: " + processor.getName() + ", OS: "
-		        + os.getName();
-	}
+    public String toString() {
+        return super.toString() + ", screensize: " + screenSize
+                + ", processor: " + processor.getName() + ", OS: "
+                + os.getName();
+    }
 
-	// Getters and Setters
+    // Getters and Setters
 
-	public String getScreenSize() {
-		return screenSize;
-	}
+    public String getScreenSize() {
+        return screenSize;
+    }
 
-	public Processor getProcessor() {
-		return processor;
-	}
+    public Processor getProcessor() {
+        return processor;
+    }
 
-	public OS getOs() {
-		return os;
-	}
+    public OS getOs() {
+        return os;
+    }
 }

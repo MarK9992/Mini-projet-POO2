@@ -1,13 +1,15 @@
-/**
- * @author Marc
- */
-
 package model;
 
 import model.users.Borrower;
 import utils.Period;
 import config.Model;
 
+/**
+ * Loan class, contains all informations about a loan.
+ * 
+ * @author Marc
+ * 
+ */
 public class Loan {
 
     // Fields
@@ -19,10 +21,19 @@ public class Loan {
 
     // Constructors
 
+    /**
+     * Default constructor, unused.
+     */
     public Loan() {
         this(null, new Period(), null);
     }
 
+    /**
+     * Constructor used to make a reservation of a model.
+     * @param model
+     * @param p
+     * @param borrower
+     */
     public Loan(Model model, Period p, Borrower borrower) {
         this.model = model;
         this.period = p;
@@ -41,7 +52,7 @@ public class Loan {
     public String getEquipmentID() {
         return equipmentID;
     }
-    
+
     public void setEquipmentID(String s) {
         equipmentID = s;
     }

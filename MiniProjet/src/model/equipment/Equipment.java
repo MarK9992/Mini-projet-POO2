@@ -1,6 +1,3 @@
-/**
- * @author Marc, Anaïs
- */
 package model.equipment;
 
 import java.util.ArrayList;
@@ -8,6 +5,11 @@ import java.util.ArrayList;
 import utils.Period;
 import config.Model;
 
+/**
+ * Super class equipment, defines the common properties to all equipments.
+ * @author Marc, Anaïs
+ * 
+ */
 public abstract class Equipment {
 
     private static int counter = 1;
@@ -36,9 +38,9 @@ public abstract class Equipment {
     // Methods
 
     /**
-     * Returns true if the equipment is available now.
+     * Checks if the equipment is available now.
      * 
-     * @return
+     * @return true if it is, false otherwise
      */
     public boolean availableNow() {
         if (this.getUnavailabalityPeriods().size() > 0) {
@@ -48,17 +50,17 @@ public abstract class Equipment {
     }
 
     /**
-     * Returns true if the equipment is available during the period p.
+     * Checks if the equipment is available during the period p.
+     * 
      * @param p
-     * @return
+     * @return true if it is, false otherwise
      */
     public boolean availableAt(Period p) {
         Period p2;
-        
-        for(int i = 0; i < this.getUnavailabalityPeriods().size(); i++)
-        {
+
+        for (int i = 0; i < this.getUnavailabalityPeriods().size(); i++) {
             p2 = this.getUnavailabalityPeriods().get(i);
-            if(Period.overlap(p, p2))
+            if (Period.overlap(p, p2))
                 return false;
         }
         return true;

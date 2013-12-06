@@ -1,6 +1,3 @@
-/**
- * @author Anaïs
- */
 package model;
 
 import java.util.ArrayList;
@@ -13,151 +10,207 @@ import utils.Period;
 import config.ConfigXML;
 import config.Model;
 
+/**
+ * Inventory class, allows acces to all equipments of the system.
+ * 
+ * @author Anaïs, Marc
+ * 
+ */
 public class Inventory {
-	private HashMap<Model, ArrayList<Equipment>> inventory = new HashMap<Model, ArrayList<Equipment>>();
+    private HashMap<Model, ArrayList<Equipment>> inventory = new HashMap<Model, ArrayList<Equipment>>();
 
-	public Inventory() {
-		this.inventory.put(Model.VENGEANCE2100, new ArrayList<Equipment>());
-		this.inventory.put(Model.XPERIAZ, new ArrayList<Equipment>());
-		this.inventory.put(Model.IPAD3, new ArrayList<Equipment>());
-	}
+    /**
+     * Default constructor.
+     */
+    public Inventory() {
+        this.inventory.put(Model.VENGEANCE2100, new ArrayList<Equipment>());
+        this.inventory.put(Model.XPERIAZ, new ArrayList<Equipment>());
+        this.inventory.put(Model.IPAD3, new ArrayList<Equipment>());
+    }
 
-	// Constructor with config
-	public Inventory(String defaultConfigNameFile, String defaultConfigVersion) {
-		this.inventory = (HashMap<Model, ArrayList<Equipment>>) ConfigXML.load(
-		        defaultConfigNameFile, defaultConfigVersion);
-	}
+    /**
+     * Constructor with config.
+     * 
+     * @param defaultConfigNameFile
+     * @param defaultConfigVersion
+     */
+    public Inventory(String defaultConfigNameFile, String defaultConfigVersion) {
+        this.inventory = (HashMap<Model, ArrayList<Equipment>>) ConfigXML.load(
+                defaultConfigNameFile, defaultConfigVersion);
+    }
 
-	// Constructor with HashMap
-	public Inventory(HashMap<Model, ArrayList<Equipment>> inventory) {
-		this.inventory = inventory;
-	}
+    /**
+     * Constructor with HashMap
+     * 
+     * @param inventory
+     */
+    public Inventory(HashMap<Model, ArrayList<Equipment>> inventory) {
+        this.inventory = inventory;
+    }
 
-	// Getter
-	public HashMap<Model, ArrayList<Equipment>> getInventory() {
-		return inventory;
-	}
+    // Getters
+    public HashMap<Model, ArrayList<Equipment>> getInventory() {
+        return inventory;
+    }
 
-	public void setInventory(HashMap<Model, ArrayList<Equipment>> inventory) {
-		this.inventory = inventory;
-	}
+    public void setInventory(HashMap<Model, ArrayList<Equipment>> inventory) {
+        this.inventory = inventory;
+    }
 
-	// Add an equipment in the stock
-	public void addEquipment(Equipment e) {
-		this.inventory.get(e.getType()).add(e);
-	}
+    // Methods
 
-	// Remove an equipment from the stock
-	public void removeEquipment(Equipment e) {
-		this.inventory.get(e.getType()).remove(e);
-	}
+    /**
+     * Add an equipment in the stock
+     * 
+     * @param e
+     */
+    public void addEquipment(Equipment e) {
+        this.inventory.get(e.getType()).add(e);
+    }
 
-	/**
-	 * Returns an equipment available now, null if none.
-	 * 
-	 * @return
-	 */
-	public Equipment findAvailableEquipment() {
-		Equipment eq;
-		Model[] t = { Model.IPAD3, Model.VENGEANCE2100, Model.XPERIAZ,
-		        Model.UNKWOWN };
+    /**
+     * Remove an equipment from the stock
+     * 
+     * @param e
+     */
+    public void removeEquipment(Equipment e) {
+        this.inventory.get(e.getType()).remove(e);
+    }
+    
+    /**
+     * Looks for the equipment of the ID id.
+     * @param id
+     * @return the equipment, null if not found.
+     */
+    public Equipment findEquipmentByID(String id)
+    {
+        Equipment eq;
+        Model[] t = { Model.IPAD3, Model.VENGEANCE2100, Model.XPERIAZ,
+                Model.UNKWOWN };
 
-		for (int j = 0; j < t.length; j++) {
-			for (int i = 0; i < this.inventory.get(t[j]).size(); i++) {
-				eq = this.inventory.get(t[j]).get(i);
-				if (eq.availableNow())
-					return eq;
-			}
-		}
+        for (int j = 0; j < t.length; j++) {
+            for (int i = 0; i < this.inventory.get(t[j]).size(); i++) {
+                eq = this.inventory.get(t[j]).get(i);
+                if (eq.getId().equals(id))
+                    return eq;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * Returns an equipment of type t available now, null if none.
-	 * 
-	 * @param t
-	 * @return
-	 */
-	public Equipment findAvailableEquipment(Model m) {
-		Equipment eq;
+    /**
+     * Looks for an equipment available now.
+     * 
+     * @return the equipment or null if none found.
+     */
+    public Equipment findAvailableEquipment() {
+        Equipment eq;
+        Model[] t = { Model.IPAD3, Model.VENGEANCE2100, Model.XPERIAZ,
+                Model.UNKWOWN };
 
-		for (int i = 0; i < this.inventory.get(m).size(); i++) {
-			eq = this.inventory.get(m).get(i);
-			if (eq.availableNow())
-				return eq;
-		}
+        for (int j = 0; j < t.length; j++) {
+            for (int i = 0; i < this.inventory.get(t[j]).size(); i++) {
+                eq = this.inventory.get(t[j]).get(i);
+                if (eq.availableNow())
+                    return eq;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	/**
-	 * Returns an equipment of type t available during the period p, null if
-	 * none.
-	 * 
-	 * @param m
-	 * @param p
-	 * @return
-	 */
-	public Equipment findAvailableEquipmentAt(Model m, Period p) {
-		Equipment eq;
+    /**
+     * Looks for an equipment of model m available now.
+     * 
+     * @param m
+     * @return the equipment or null if none found.
+     */
+    public Equipment findAvailableEquipment(Model m) {
+        Equipment eq;
 
-		for (int i = 0; i < this.inventory.get(m).size(); i++) {
-			eq = this.inventory.get(m).get(i);
-			if (eq.availableAt(p))
-				return eq;
-		}
+        for (int i = 0; i < this.inventory.get(m).size(); i++) {
+            eq = this.inventory.get(m).get(i);
+            if (eq.availableNow())
+                return eq;
+        }
 
-		return null;
-	}
+        return null;
+    }
 
-	// Count the total number of elements in the stock
-	public int getNumberElements() {
-		int number = 0;
+    /**
+     * Looks for an equipment of model m available during the period p.
+     * 
+     * @param m
+     * @param p
+     * @return the equipment or null if none found
+     */
+    public Equipment findAvailableEquipmentAt(Model m, Period p) {
+        Equipment eq;
 
-		Set<Model> keys = this.inventory.keySet();
-		Iterator<Model> it = keys.iterator();
+        for (int i = 0; i < this.inventory.get(m).size(); i++) {
+            eq = this.inventory.get(m).get(i);
+            if (eq.availableAt(p))
+                return eq;
+        }
 
-		while (it.hasNext()) {
-			Model key = it.next();
-			number += this.inventory.get(key).size();
-		}
+        return null;
+    }
 
-		return number;
-	}
+    /**
+     * Counts the total number of elements in the stock
+     * @return the number of Elements in the inventory.
+     */
+    public int getNumberElements() {
+        int number = 0;
 
-	// return true if this equipment exist in the stock
-	public Boolean isInStock(Equipment e) {
-		Set<Model> keys = this.inventory.keySet();
-		Iterator<Model> it = keys.iterator();
+        Set<Model> keys = this.inventory.keySet();
+        Iterator<Model> it = keys.iterator();
 
-		while (it.hasNext()) {
-			Model key = it.next();
+        while (it.hasNext()) {
+            Model key = it.next();
+            number += this.inventory.get(key).size();
+        }
 
-			for (Equipment i : this.inventory.get(key)) {
-				if (e.equals(i))
-					return true;
-			}
-		}
-		return false;
-	}
+        return number;
+    }
 
-	@Override
-	public String toString() {
-		String res = "";
-		Set<Model> keys = this.inventory.keySet();
-		Iterator<Model> it = keys.iterator();
+    /**
+     * Checks if the equipment e exists in the stock
+     * @param e
+     * @return true if yes, false else
+     */
+    public Boolean isInStock(Equipment e) {
+        Set<Model> keys = this.inventory.keySet();
+        Iterator<Model> it = keys.iterator();
 
-		res += "--- EQUIPMENTS ---\n\n";
+        while (it.hasNext()) {
+            Model key = it.next();
 
-		while (it.hasNext()) {
-			Model key = it.next();
-			res += "EQUIPMENTS TYPE : " + key.toString() + "\n";
+            for (Equipment i : this.inventory.get(key)) {
+                if (e.equals(i))
+                    return true;
+            }
+        }
+        return false;
+    }
 
-			for (Equipment e : this.inventory.get(key)) {
-				res += "\t" + e.toString() + "\n";
-			}
-		}
-		return res;
-	}
+    @Override
+    public String toString() {
+        String res = "";
+        Set<Model> keys = this.inventory.keySet();
+        Iterator<Model> it = keys.iterator();
+
+        res += "--- EQUIPMENTS ---\n\n";
+
+        while (it.hasNext()) {
+            Model key = it.next();
+            res += "EQUIPMENTS TYPE : " + key.toString() + "\n";
+
+            for (Equipment e : this.inventory.get(key)) {
+                res += "\t" + e.toString() + "\n";
+            }
+        }
+        return res;
+    }
 }

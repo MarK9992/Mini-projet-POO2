@@ -1,6 +1,3 @@
-/**
- * @author Anaïs
- */
 package model;
 
 import java.util.ArrayList;
@@ -12,6 +9,13 @@ import model.users.Teacher;
 import model.users.User;
 import config.ConfigXML;
 
+/**
+ * Contains all the information about the management system and the methods to
+ * run it.
+ * 
+ * @author Anaïs
+ * 
+ */
 public class ManagementSystem {
     private Inventory inventory;
     private ArrayList<Student> students = new ArrayList<Student>();
@@ -28,24 +32,35 @@ public class ManagementSystem {
                 configUsersFile, configVersion)).get("teachers");
         this.managers = ((HashMap<String, ArrayList<Manager>>) ConfigXML.load(
                 configUsersFile, configVersion)).get("managers");
-        
+
     }
 
-    // Call a manager for checking the loan
-    public void checkLoan(Loan l) {	
-    	Manager m = new Manager();
-    	m = (Manager)(this.managers.get(0));
-    	if(m.checkLoan(l, this.inventory) == true) {
-    		ongoingValidationLoans.add(l);
-    	}
+    /**
+     * Calls a manager to check a loan.
+     * 
+     * @param l
+     */
+    public void checkLoan(Loan l) {
+        Manager m = new Manager();
+        m = (Manager) (this.managers.get(0));
+        if (m.checkLoan(l, this.inventory) == true) {
+            ongoingValidationLoans.add(l);
+        }
     }
-    
-    // Call a manager for restitute the loan
-    public void restitute(Loan l) {	
-    	Manager m = new Manager();
-    	m = (Manager)(this.managers.get(0));
-    	this.ongoingValidationLoans = m.putAway(l, this.ongoingValidationLoans);
+
+    /**
+     * Calls a manager to give back a loan.
+     * 
+     * @param l
+     */
+    public void putAway(Loan l) {
+        Manager m = new Manager();
+        m = (Manager) (this.managers.get(0));
+        this.ongoingValidationLoans = m.putAway(l, this.ongoingValidationLoans,
+                this.inventory);
     }
+
+    // Getters and setters
 
     public Inventory getInventory() {
         return inventory;
@@ -78,18 +93,16 @@ public class ManagementSystem {
     public void setTeachers(ArrayList<Teacher> teachers) {
         this.teachers = teachers;
     }
-    
-    
 
     public ArrayList<Loan> getOngoingValidationLoans() {
-    	return ongoingValidationLoans;
+        return ongoingValidationLoans;
     }
 
-	public void setOngoingValidationLoans(ArrayList<Loan> ongoingValidationLoans) {
-    	this.ongoingValidationLoans = ongoingValidationLoans;
+    public void setOngoingValidationLoans(ArrayList<Loan> ongoingValidationLoans) {
+        this.ongoingValidationLoans = ongoingValidationLoans;
     }
 
-	@Override
+    @Override
     public String toString() {
         String res = "";
 
@@ -111,7 +124,7 @@ public class ManagementSystem {
         for (User u : this.teachers) {
             res += "\t" + u.toString() + "\n";
         }
-        
+
         res += "\n--- VALIDATION LOANS ---\n\n";
         for (Loan l : this.ongoingValidationLoans) {
             res += "\t" + l.toString() + "\n";
@@ -119,12 +132,12 @@ public class ManagementSystem {
 
         return res;
     }
-	
+
     public String toStringLoan() {
         String res = "";
 
         res += "--- USERS ---\n";
-        
+
         res += "\n--- VALIDATION LOANS ---\n\n";
         for (Loan l : this.ongoingValidationLoans) {
             res += "\t" + l.toString() + "\n";
