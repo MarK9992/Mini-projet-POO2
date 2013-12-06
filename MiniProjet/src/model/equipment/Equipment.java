@@ -1,3 +1,6 @@
+/**
+ * @author Marc, Anaïs
+ */
 package model.equipment;
 
 import java.util.ArrayList;

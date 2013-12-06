@@ -1,3 +1,6 @@
+/**
+ * @author Marc
+ */
 package model.users;
 
 import java.util.ArrayList;

@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 package model.users;
 
 import static org.junit.Assert.assertEquals;

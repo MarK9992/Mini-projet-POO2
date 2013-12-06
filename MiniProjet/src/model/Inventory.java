@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 package model;
 
 import java.util.ArrayList;

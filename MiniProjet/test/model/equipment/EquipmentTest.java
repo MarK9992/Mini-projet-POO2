@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import utils.Period;
-
+/**
+ * @author Anaïs
+ */
 public class EquipmentTest {
 
 	@Test

@@ -1,5 +1,7 @@
 package model.equipment;
-
+/**
+ * @author Marc
+ */
 import java.util.ArrayList;
 
 import utils.Period;

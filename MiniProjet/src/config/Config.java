@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 package config;
 
 import java.util.ArrayList;
@@ -54,7 +57,7 @@ public class Config {
 		users.put("students", students);
 		users.put("teachers", teachers);
 
-		// Test enregistrer
+		// Test store the default config
 		ConfigXML.store(inventory.getInventory(), "inventory", "v1");
 		ConfigXML.store(users, "users", "v1");
 	}

@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 package controller;
 
 import java.util.Calendar;
@@ -20,6 +23,9 @@ public class Controller {
 		
 	}
 
+	/**
+	 * Launcher of the demo of the managementSystem
+	 */
 	public void startDemo() {
 		// Welcoming display
 		this.view.displayMenu();

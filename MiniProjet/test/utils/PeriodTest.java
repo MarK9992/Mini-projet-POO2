@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 package utils;
 
 import static org.junit.Assert.assertEquals;

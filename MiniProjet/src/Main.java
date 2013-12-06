@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 import controller.Controller;
 
 public class Main {

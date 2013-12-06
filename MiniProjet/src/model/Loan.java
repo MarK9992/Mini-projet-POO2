@@ -1,3 +1,7 @@
+/**
+ * @author Marc
+ */
+
 package model;
 
 import model.users.Borrower;

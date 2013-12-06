@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs
+ */
 package model;
 
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class ManagementSystem {
         
     }
 
+    // Call a manager for checking the loan
     public void checkLoan(Loan l) {	
     	Manager m = new Manager();
     	m = (Manager)(this.managers.get(0));
@@ -36,6 +40,7 @@ public class ManagementSystem {
     	}
     }
     
+    // Call a manager for restitute the loan
     public void restitute(Loan l) {	
     	Manager m = new Manager();
     	m = (Manager)(this.managers.get(0));

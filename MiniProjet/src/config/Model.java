@@ -1,5 +1,9 @@
+/**
+ * @author Marc
+ */
 package config;
 
+// Enum for the models of equipment available by the system
 public enum Model {
 	IPAD3("Ipad3"), VENGEANCE2100("Vengeance2100"), XPERIAZ("XperiaZ"), UNKWOWN(
 	        "Unkwown");

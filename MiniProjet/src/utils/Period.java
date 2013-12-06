@@ -1,3 +1,6 @@
+/**
+ * @author Anaïs, Marc
+ */
 package utils;
 
 import java.util.Calendar;
