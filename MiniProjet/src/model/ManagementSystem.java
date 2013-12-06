@@ -13,36 +13,38 @@ import model.users.*;
 
 public class ManagementSystem {
     private Inventory inventory;
-    private ArrayList<User> students = new ArrayList<User>();
-    private ArrayList<User> teachers = new ArrayList<User>();
-    private ArrayList<User> managers = new ArrayList<User>();
+    private ArrayList<Student> students = new ArrayList<Student>();
+    private ArrayList<Teacher> teachers = new ArrayList<Teacher>();
+    private ArrayList<Manager> managers = new ArrayList<Manager>();
     private ArrayList<Loan> ongoingValidationLoans = new ArrayList<Loan>();
 
     public ManagementSystem(Inventory inventory,
             HashMap<String, ArrayList<User>> users) {
         this.inventory = inventory;
-        this.students = users.get("students");
-        this.teachers = users.get("teachers");
-        this.managers = users.get("managers");
+       // this.students = users.get("students");
+       // this.teachers = users.get("teachers");
+       // this.managers = users.get("managers");
 
     }
 
     public ManagementSystem(String configInventoryFile, String configUsersFile,
             String configVersion) {
         this.inventory = new Inventory(configInventoryFile, configVersion);
-        this.students = ((HashMap<String, ArrayList<User>>) ConfigXML.load(
+        this.students = ((HashMap<String, ArrayList<Student>>) ConfigXML.load(
                 configUsersFile, configVersion)).get("students");
-        this.teachers = ((HashMap<String, ArrayList<User>>) ConfigXML.load(
+        this.teachers = ((HashMap<String, ArrayList<Teacher>>) ConfigXML.load(
                 configUsersFile, configVersion)).get("teachers");
-        this.managers = ((HashMap<String, ArrayList<User>>) ConfigXML.load(
+        this.managers = ((HashMap<String, ArrayList<Manager>>) ConfigXML.load(
                 configUsersFile, configVersion)).get("managers");
+        
     }
 
-    public void demo() {
-        // User 1 fait une demande d'emprunt
-        // ongoingValidationLoans.add(((Student)(this.students.get(0))).borrow(/*Model.IPAD3*/));
-        // = this.managers.get(0).checkLoan(dernierEmprunt);
-        // CheckOngoingLoans()
+    public void checkLoan(Loan l) {	
+    	Manager m = new Manager();
+    	m = (Manager)(this.managers.get(0));
+    	if(m.checkLoan(l, this.inventory) == true) {
+    		ongoingValidationLoans.add(l);
+    	}
     }
 
     public Inventory getInventory() {
@@ -53,27 +55,27 @@ public class ManagementSystem {
         this.inventory = inventory;
     }
 
-    public ArrayList<User> getManagers() {
+    public ArrayList<Manager> getManagers() {
         return managers;
     }
 
-    public void setManagers(ArrayList<User> managers) {
+    public void setManagers(ArrayList<Manager> managers) {
         this.managers = managers;
     }
 
-    public ArrayList<User> getStudents() {
+    public ArrayList<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(ArrayList<User> students) {
+    public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
 
-    public ArrayList<User> getTeachers() {
+    public ArrayList<Teacher> getTeachers() {
         return teachers;
     }
 
-    public void setTeachers(ArrayList<User> teachers) {
+    public void setTeachers(ArrayList<Teacher> teachers) {
         this.teachers = teachers;
     }
 
@@ -98,6 +100,11 @@ public class ManagementSystem {
         res += "\nTeachers\n";
         for (User u : this.teachers) {
             res += "\t" + u.toString() + "\n";
+        }
+        
+        res += "\n--- ON GOING VALIDATION LOANS ---";
+        for (Loan l : this.ongoingValidationLoans) {
+            res += "\t" + l.toString() + "\n";
         }
 
         return res;

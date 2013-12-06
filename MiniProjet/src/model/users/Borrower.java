@@ -12,18 +12,19 @@ public abstract class Borrower extends User {
     
     // Fields
     
-    private ArrayList<Loan> loanList;
+    private ArrayList<Loan> loanList = new ArrayList<Loan>() ;
     private final String type;
     
     // Constructors
-    
-    public Borrower() {
+
+	public Borrower() {
         this("B", "unknown", new ArrayList<Loan>(), "unknown");
     }
     
     public Borrower(String i, String n, ArrayList<Loan> l, String t) {
         super(i, n);
-        loanList = l;
+              
+        this.loanList = l;
         type = t;
     }
 
@@ -37,8 +38,13 @@ public abstract class Borrower extends User {
     }
     
     // Getters and setters
-
+    public void setLoanList(ArrayList<Loan> loanList) {
+    	this.loanList = loanList;
+    }
+    
     public ArrayList<Loan> getLoanList() {
+    	
+    	System.err.println("LOL ? " + this.loanList);
         return loanList;
     }
     

@@ -1,6 +1,5 @@
 package model.users;
 
-import config.Model;
 
 public abstract class User {
     

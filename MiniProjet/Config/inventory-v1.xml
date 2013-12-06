@@ -41,6 +41,38 @@
     </list>
   </entry>
   <entry>
+    <config.Model>VENGEANCE2100</config.Model>
+    <list>
+      <model.equipment.Vengeance2100>
+        <id>Vengeance-10</id>
+        <maker>Corsair</maker>
+        <unavailabalityPeriods/>
+        <type>VENGEANCE2100</type>
+        <impedance>32 Ohms</impedance>
+        <frequencyResponse>20-20000 Hz</frequencyResponse>
+        <soundPressure>105 dB</soundPressure>
+      </model.equipment.Vengeance2100>
+      <model.equipment.Vengeance2100>
+        <id>Vengeance-11</id>
+        <maker>Corsair</maker>
+        <unavailabalityPeriods/>
+        <type>VENGEANCE2100</type>
+        <impedance>32 Ohms</impedance>
+        <frequencyResponse>20-20000 Hz</frequencyResponse>
+        <soundPressure>105 dB</soundPressure>
+      </model.equipment.Vengeance2100>
+      <model.equipment.Vengeance2100>
+        <id>Vengeance-12</id>
+        <maker>Corsair</maker>
+        <unavailabalityPeriods/>
+        <type>VENGEANCE2100</type>
+        <impedance>32 Ohms</impedance>
+        <frequencyResponse>20-20000 Hz</frequencyResponse>
+        <soundPressure>105 dB</soundPressure>
+      </model.equipment.Vengeance2100>
+    </list>
+  </entry>
+  <entry>
     <config.Model>XPERIAZ</config.Model>
     <list>
       <model.equipment.XperiaZ>
@@ -88,38 +120,6 @@
         <processor>APQ8064</processor>
         <os>ANDROID41</os>
       </model.equipment.XperiaZ>
-    </list>
-  </entry>
-  <entry>
-    <config.Model>VENGEANCE2100</config.Model>
-    <list>
-      <model.equipment.Vengeance2100>
-        <id>Vengeance-10</id>
-        <maker>Corsair</maker>
-        <unavailabalityPeriods/>
-        <type>VENGEANCE2100</type>
-        <impedance>32 Ohms</impedance>
-        <frequencyResponse>20-20000 Hz</frequencyResponse>
-        <soundPressure>105 dB</soundPressure>
-      </model.equipment.Vengeance2100>
-      <model.equipment.Vengeance2100>
-        <id>Vengeance-11</id>
-        <maker>Corsair</maker>
-        <unavailabalityPeriods/>
-        <type>VENGEANCE2100</type>
-        <impedance>32 Ohms</impedance>
-        <frequencyResponse>20-20000 Hz</frequencyResponse>
-        <soundPressure>105 dB</soundPressure>
-      </model.equipment.Vengeance2100>
-      <model.equipment.Vengeance2100>
-        <id>Vengeance-12</id>
-        <maker>Corsair</maker>
-        <unavailabalityPeriods/>
-        <type>VENGEANCE2100</type>
-        <impedance>32 Ohms</impedance>
-        <frequencyResponse>20-20000 Hz</frequencyResponse>
-        <soundPressure>105 dB</soundPressure>
-      </model.equipment.Vengeance2100>
     </list>
   </entry>
 </map>

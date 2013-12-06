@@ -26,7 +26,6 @@ public class Student extends Borrower {
     @Override
     public Loan book(Model m, Period p) {
             Loan l = new Loan(m, p, this);
-            
             return l;
     }
 

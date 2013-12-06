@@ -34,15 +34,15 @@ public class Config {
 		
 		// Create the default student list for the configuration
 		ArrayList<User> students = new ArrayList<User>();
-		students.add(new Student("S-1", "Ana", null));
-		students.add(new Student("S-2", "Marc", null));
-		students.add(new Student("S-3", "Seb", null));
-		students.add(new Student("S-4", "Mael", null));
+		students.add(new Student("S-1", "Ana", new ArrayList<Loan>()));
+		students.add(new Student("S-2", "Marc", new ArrayList<Loan>()));
+		students.add(new Student("S-3", "Seb", new ArrayList<Loan>()));
+		students.add(new Student("S-4", "Mael", new ArrayList<Loan>()));
 		
 		// Create the default teacher list for the configuration
 		ArrayList<User> teachers = new ArrayList<User>();
-		teachers.add(new Teacher("T-1", "MSander", null));
-		teachers.add(new Teacher("T-2", "MmeLaFaurie", null));
+		teachers.add(new Teacher("T-1", "MSander", new ArrayList<Loan>()));
+		teachers.add(new Teacher("T-2", "MmeLaFaurie", new ArrayList<Loan>()));
 		
 		// Create the default managers list for the configuration
 		ArrayList<User> managers = new ArrayList<User>();

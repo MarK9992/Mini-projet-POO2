@@ -34,12 +34,4 @@ public class Teacher extends Borrower {
         // TODO Auto-generated method stub
         
     }
-    
-    // Main
-    
-    public static void main(String[] args) {
-        Teacher t1 = new Teacher();
-        
-        System.out.println(t1);
-    }
 }

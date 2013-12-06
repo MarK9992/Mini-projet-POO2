@@ -1,6 +1,11 @@
 package controller;
 
+import java.util.Calendar;
+
+import config.Model;
 import model.ManagementSystem;
+import model.users.Student;
+import utils.Period;
 import view.View;
 
 public class Controller {
@@ -10,6 +15,7 @@ public class Controller {
 	public Controller() {
 		this.view = new View();
 		this.system = new ManagementSystem("inventory", "users", "v1");
+		
 	}
 
 	public void start() {
@@ -20,6 +26,12 @@ public class Controller {
 		this.view.displaySystem(this.system);
 		
 		// TODO launch borrow demo
+		Calendar startDate = Calendar.getInstance();
+		Calendar endDate = Calendar.getInstance();
+		endDate.set(2013, 07, 12);
+	
+		this.system.checkLoan(this.system.getStudents().get(0).book(Model.IPAD3, new Period(startDate,endDate)));
+		
 
 	}
 }

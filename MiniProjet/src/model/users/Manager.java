@@ -1,5 +1,6 @@
 package model.users;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import utils.Period;
@@ -39,7 +40,9 @@ public class Manager extends User implements BorrowerConstants {
         // Checks if the loan is valid
         if(stuff == null)
             return false;
-        if(bwer.getType().equals("teacher"))
+        
+        //if(bwer.getType().equals("teacher")) => ne reconnait pas que c'est un Teacher 
+        if(bwer instanceof Teacher)
         {
             LOAN_DURATION_LIMIT = TEACHER_LOAN_DURATION_LIMIT;
             LOAN_RESERVATION_LIMIT = TEACHER_LOAN_RESERVATION_LIMIT;
@@ -55,6 +58,7 @@ public class Manager extends User implements BorrowerConstants {
         // Updates the stuff, the loan and the borrower
         stuff.getUnavailabalityPeriods().add(period);
         l.setEquipmentID(stuff.getId());
+        
         bwer.getLoanList().add(l);
         
         return true;
@@ -62,13 +66,5 @@ public class Manager extends User implements BorrowerConstants {
     
     public void putAway(Loan l) {
         // TODO
-    }
-    
-    // Main
-    
-    public static void main(String[] args) {
-        Manager m1 = new Manager();
-        
-        System.out.println(m1);
     }
 }
